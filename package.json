@@ -1,7 +1,7 @@
 {
   "name": "ipc",
   "description": "A simple inter process communication library along with distributed election algorithm (Bully) for Node.js",
-  "version": "0.1",
+  "version": "0.0.1",
   "author": "Paris Stamatopoulos <mobius@foriamroot.org>",
   "repository": {
     "type": "git",
@@ -10,8 +10,8 @@
   "keywords": ["ipc", "interprocess", "bully", "distributed", "messages"],
   "dependencies": {
     "async": "0.1.x",
-    "winston": "0.5.9",
-    "redis": "0.7.1"
+    "winston": "0.5.x",
+    "redis": "0.7.x"
   },
   "main": "./ipc.js",
   "engines": { "node": ">= 0.4.0" }
