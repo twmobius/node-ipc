@@ -1,4 +1,4 @@
-Node.js Inter-process communication and election
+Node.js Inter-process communication and election library.
 
 node-ipc implements the Bully algorithm (http://en.wikipedia.org/wiki/Bully_algorithm) making it 
 possible for multiple instances of the same application to elect a master process and at the same 
