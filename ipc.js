@@ -38,8 +38,13 @@ var Defaults = {
   electionInterval : 60000
 };
 
-var Ipc = function( serverId, options ) {
+var Ipc = function( serverId,redisPort, redisHost, options ) {
   var self = this;
+
+  // Reverting to Default RedisPort and RedisHost config if no values supplied
+  redisPort = typeof redisPort !== 'undefined' ? redisPort : 6379;
+  redisHost = typeof redisHost !== 'undefined' ? redisHost : 'localhost';
+
 
   events.EventEmitter.call(this);
 
@@ -55,14 +60,14 @@ var Ipc = function( serverId, options ) {
    *
    * @var redis
    */
-  this._redis = redis.createClient();
+  this._redis = redis.createClient(redisPort, redisHost);
 
   /**
    * The redis client for the IPC
    *
    * @var redis
    */
-  this._subscriber = redis.createClient();
+  this._subscriber = redis.createClient(redisPort, redisHost);
 
   /**
    * The server id of this server process
