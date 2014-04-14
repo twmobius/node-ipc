@@ -35,7 +35,11 @@ var PackerEnum = {
 var Defaults = {
   pid              : process.pid,
   packer           : PackerEnum.JSON,
-  electionInterval : 60000
+  electionInterval : 60000,
+  redis            : {
+    host : 'localhost',
+    port : 6379
+  }
 };
 
 var Ipc = function( serverId, options ) {
@@ -55,14 +59,14 @@ var Ipc = function( serverId, options ) {
    *
    * @var redis
    */
-  this._redis = redis.createClient();
+  this._redis = redis.createClient( this._options.redis.port, this._options.redis.host );
 
   /**
    * The redis client for the IPC
    *
    * @var redis
    */
-  this._subscriber = redis.createClient();
+  this._subscriber = redis.createClient( this._options.redis.port, this._options.redis.host );
 
   /**
    * The server id of this server process
